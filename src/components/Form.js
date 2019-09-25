@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bin from '../img/bin.svg';
-import { addItem, deleteAll, deleteDate, sortItems } from './formFunctions';
+import { addItem, deleteAll, deleteDate, sortItems, triggerNotification } from './formFunctions';
 
 function Form() {
     const [itemList, setItemList] = useState([]);
@@ -51,7 +51,7 @@ function Form() {
                     };
                     return (
                         <div className={getColor()} id='list' key={index}>
-                            <li id={item.name}>
+                            <li id={item.name} onLoad={triggerNotification()}>
                                 {item.name} {date}
                                 <button onClick={() => deleteDate(item, setItemList)} className='Button'>
                                     <img src={bin} className='Bin-logo' alt='bin logo' />
@@ -65,6 +65,7 @@ function Form() {
                     <button onClick={() => deleteAll(setItemList)} className='RemoveAll'>Remove All Items</button>
                 }
             </ul>
+            {/* <button onClick={() => triggerNotification()}>push</button> */}
         </>
     );
 }
