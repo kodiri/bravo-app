@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import bin from '../img/bin.svg';
 import { addItem, deleteAll, deleteDate, sortItems } from './formFunctions';
+import { triggerNotificationWarning, triggerNotificationDanger } from './Notifications';
 
 function Form() {
     const [itemList, setItemList] = useState([]);
@@ -46,12 +47,19 @@ function Form() {
                             'ItemList' :
                             expiryDateColor > todayColor ?
                                 'AlmostExpired' :
-                                'ExpiredItem';
-                                
+                                'ExpiredItem';          
+                    };
+
+                    function getNotification(item) {
+                        return expiryDateColor - days2InMillisecond > todayColor ?
+                            '' :
+                        expiryDateColor > todayColor ?
+                            triggerNotificationWarning(item) :
+                            triggerNotificationDanger(item);           
                     };
                     return (
                         <div className={getColor()} id='list' key={index}>
-                            <li id={item.name}>
+                            <li id={item.name} onLoad={getNotification(item)}>
                                 {item.name} {date}
                                 <button onClick={() => deleteDate(item, setItemList)} className='Button'>
                                     <img src={bin} className='Bin-logo' alt='bin logo' />
@@ -65,6 +73,7 @@ function Form() {
                     <button onClick={() => deleteAll(setItemList)} className='RemoveAll'>Remove All Items</button>
                 }
             </ul>
+            {/* <button onClick={() => triggerNotification()}>push</button> */}
         </>
     );
 }
