@@ -47,8 +47,7 @@ function Form() {
                             'ItemList' :
                             expiryDateColor > todayColor ?
                                 'AlmostExpired' :
-                                'ExpiredItem';
-                                
+                                'ExpiredItem';          
                     };
 
                     function getNotification() {
@@ -56,8 +55,7 @@ function Form() {
                             '' :
                         expiryDateColor > todayColor ?
                             triggerNotificationWarning :
-                            triggerNotificationDanger;
-                                
+                            triggerNotificationDanger;           
                     };
                     return (
                         <div className={getColor()} id='list' key={index}>

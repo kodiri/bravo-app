@@ -12,9 +12,9 @@ function deleteDate(item, setItemList) {
         if (dbItemList.length > 0) {
             sortItems(dbItemList, setItemList);
         }
-    })
-    
+    })  
 }
+
 function deleteAll(setItemList) {
     fetch('/rest/products/deleteAll', {
         method: 'delete',
@@ -26,6 +26,7 @@ function deleteAll(setItemList) {
         setItemList(dbItemList)
     })
 }
+
 function addItem(e, itemList, setItemList) {
     e.preventDefault();
     let name = e.target.children[1].value;

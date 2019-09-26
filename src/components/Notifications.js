@@ -6,7 +6,7 @@ function triggerNotificationWarning() {
       message: "Less than 2 days left for this item",
       type: "warning",
       insert: "top",
-      container: "top-right",
+      container: "top-left",
       animationIn: ["animated", "fadeIn"],
       animationOut: ["animated", "fadeOut"],
       dismiss: {
@@ -21,7 +21,6 @@ function triggerNotificationWarning() {
       title: "Sorry!",
       message: "This item is expired",
       type: "danger",
-      icon: "danger",
       insert: "top",
       container: "top-right",
       animationIn: ["animated", "fadeIn"],
