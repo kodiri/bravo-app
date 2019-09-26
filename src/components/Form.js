@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import bin from '../img/bin.svg';
-import { addItem, deleteAll, deleteDate, sortItems, triggerNotification } from './formFunctions';
+import { addItem, deleteAll, deleteDate, sortItems } from './formFunctions';
+import { triggerNotificationWarning, triggerNotificationDanger } from './Notifications';
 
 function Form() {
     const [itemList, setItemList] = useState([]);
@@ -49,9 +50,18 @@ function Form() {
                                 'ExpiredItem';
                                 
                     };
+
+                    function getNotification() {
+                        return expiryDateColor - days2InMillisecond > todayColor ?
+                            '' :
+                        expiryDateColor > todayColor ?
+                            triggerNotificationWarning :
+                            triggerNotificationDanger;
+                                
+                    };
                     return (
                         <div className={getColor()} id='list' key={index}>
-                            <li id={item.name} onLoad={triggerNotification()}>
+                            <li id={item.name} onLoad={getNotification()}>
                                 {item.name} {date}
                                 <button onClick={() => deleteDate(item, setItemList)} className='Button'>
                                     <img src={bin} className='Bin-logo' alt='bin logo' />

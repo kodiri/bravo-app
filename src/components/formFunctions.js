@@ -1,5 +1,3 @@
-import { store } from 'react-notifications-component';
-
 function deleteDate(item, setItemList) {
     const { name, expiryDate } = item;
     //DELETE from db
@@ -55,20 +53,4 @@ function sortItems(items, setItemList) {
     setItemList(sorted);
 }
 
-function triggerNotification() {
-    store.addNotification({
-      title: "Wonderful!",
-      message: "It works",
-      type: "warning",
-      insert: "top",
-      container: "top-right",
-      animationIn: ["animated", "fadeIn"],
-      animationOut: ["animated", "fadeOut"],
-      dismiss: {
-        duration: 5000,
-        onScreen: true
-      }
-    });
-  }
-
-export { deleteDate, deleteAll, addItem, sortItems, triggerNotification };
+export { deleteDate, deleteAll, addItem, sortItems };
