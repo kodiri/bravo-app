@@ -50,16 +50,16 @@ function Form() {
                                 'ExpiredItem';          
                     };
 
-                    function getNotification() {
+                    function getNotification(item) {
                         return expiryDateColor - days2InMillisecond > todayColor ?
                             '' :
                         expiryDateColor > todayColor ?
-                            triggerNotificationWarning :
-                            triggerNotificationDanger;           
+                            triggerNotificationWarning(item) :
+                            triggerNotificationDanger(item);           
                     };
                     return (
                         <div className={getColor()} id='list' key={index}>
-                            <li id={item.name} onLoad={getNotification()}>
+                            <li id={item.name} onLoad={getNotification(item)}>
                                 {item.name} {date}
                                 <button onClick={() => deleteDate(item, setItemList)} className='Button'>
                                     <img src={bin} className='Bin-logo' alt='bin logo' />
