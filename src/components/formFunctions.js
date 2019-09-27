@@ -7,12 +7,11 @@ function deleteDate(item, setItemList) {
         headers: {
             "Content-Type": "application/json; charset=utf-8"
         }
-    }).then((response) => response.json())
-    .then((dbItemList) => {
-        if (dbItemList.length > 0) {
+    })
+        .then((response) => response.json())
+        .then((dbItemList) => {
             sortItems(dbItemList, setItemList);
-        }
-    })  
+        })
 }
 
 function deleteAll(setItemList) {
@@ -22,9 +21,9 @@ function deleteAll(setItemList) {
             "Content-Type": "application/json; charset=utf-8"
         }
     }).then((response) => response.json())
-    .then((dbItemList) => {
-        setItemList(dbItemList)
-    })
+        .then((dbItemList) => {
+            setItemList(dbItemList)
+        })
 }
 
 function addItem(e, itemList, setItemList) {
@@ -40,13 +39,10 @@ function addItem(e, itemList, setItemList) {
             "Content-Type": "application/json; charset=utf-8"
         }
     })
-    .then((response) => response.json())
-    .then((dbItemList) => {
-        console.log(dbItemList, 'dbItemList')
-        if (dbItemList.length > 0) {
+        .then((response) => response.json())
+        .then((dbItemList) => {
             sortItems(dbItemList, setItemList);
-        }
-    })
+        })
 }
 
 function sortItems(items, setItemList) {
