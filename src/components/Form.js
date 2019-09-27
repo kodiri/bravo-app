@@ -59,7 +59,7 @@ function Form() {
                     };
                     return (
                         <div className={getColor()} id='list' key={index}>
-                            <li id={item.name} onLoad={getNotification(item)}>
+                            <li id={item.name} onload={getNotification(item)}>
                                 {item.name} {date}
                                 <button onClick={() => deleteDate(item, setItemList)} className='Button'>
                                     <img src={bin} className='Bin-logo' alt='bin logo' />

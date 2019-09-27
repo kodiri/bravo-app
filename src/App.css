@@ -107,3 +107,7 @@ h1 {
 label {
   font-size: large;
 }
+
+img {
+  cursor: pointer;
+}
